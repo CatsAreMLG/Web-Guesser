@@ -1,19 +1,99 @@
 <html>
   <head>
   	<style type="text/css">
+  		* {
+  			padding: 0;
+  			margin: 0;
+  			box-sizing: border-box;
+  		}
   		body {
-        background: <%= background %>;
-      }
+	        background: <%= background %>;
+	        text-align: center;
+	        font-size: 2em;
+	        font-family: arial;
+	        font-weight: bold;
+        }
+        input {
+      		margin: 5px;
+        }
+        p {
+        	padding: 10px;
+        }
+        .container {
+        	width: 100%;
+        }
+        #mainDiv {
+        	margin-top: 15px;
+	      	border-radius: 3px;
+	      	background: #fff;
+	      	padding: 5px;
+	      	border: 1px solid #aaa;
+	      	width: 50%;
+	      	float: left;
+        }
+        .sides {
+        	width: 25%;
+        	float: left;
+        }
+        input[type=checkbox].css-checkbox {
+			position:absolute;
+			z-index:-1000;
+			left:-1000px;
+			overflow: hidden;
+			clip: rect(0 0 0 0);
+			height:1px;
+			width:1px;
+			margin:-1px;
+			padding:0;
+			border: 0;
+		}
+
+		input[type=checkbox].css-checkbox + label.css-label {
+			margin-top: 10px;
+			padding-left:30px;
+			height:25px; 
+			display:inline-block;
+			line-height:25px;
+			background-repeat:no-repeat;
+			background-position: 0 0;
+			font-size:25px;
+			vertical-align:middle;
+			cursor:pointer;
+		}
+
+		input[type=checkbox].css-checkbox:checked + label.css-label {
+			background-position: 0 -25px;
+		}
+		label.css-label {
+			background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_391ce065f36b1460c4845fa9b5173fba.png);
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
   	</style>
   </head>
   <body>
   	<form>
-  		<input type='text' name='guess' />
-  		<input type='submit' value='Guess!' />
+  		<input type='text' name='guess'>
+  		<input type='submit' value='Guess!'> <br>
+  		<input type="checkbox" name="cheat" id ="cheat" class="css-checkbox"  >
+  		<label for="cheat" class="css-label">Cheat Mode</label>
 	</form>
-	<p><%= message %></p>
-    <p>
-      The SECRET NUMBER is <%= number %>
-    </p>
+	<div class="container">
+		<div class="sides">&nbsp;</div>
+		<div id="mainDiv">
+			<p><%= message %></p>
+		    <p>
+		      <%= number %>
+		    </p>
+		    <p><%= score %> tries left.</p>
+		    <p><%= win %></p>
+		    <p><%= lose %></p>
+		</div>
+		<div class="sides">&nbsp;</div>
+	</div>
   </body>
 </html>
